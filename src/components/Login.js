@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
 function Login(props) {
@@ -27,6 +27,9 @@ function Login(props) {
       localStorage.setItem("user", userData);
 
       navigate("/");
+      window.location.reload();
+    } else {
+      setErrorMessage(true);
     }
   };
 
@@ -50,6 +53,9 @@ function Login(props) {
         ></input>
         <button type="submit">Submit</button>
       </form>
+      <Link to="/signup">
+        <button id="signup">SignUp</button>
+      </Link>
       {errorMessage && <p>username or password not found</p>}
     </div>
   );

@@ -1,4 +1,4 @@
-import { useState, useRef, searchRef } from "react";
+import { useState, useRef } from "react";
 import axios from "axios";
 import SearchResults from "../components/SearchResults";
 import React from "react";
@@ -18,7 +18,11 @@ function SearchPage() {
       const res = await axios.get(
         `http://localhost:8080/customer/${searchValue}`
       );
-      setSearchResults(res.data);
+
+      const userData = [];
+      userData.push(res.data);
+      console.log(userData);
+      setSearchResults(userData);
     }
 
     if (databaseValue === "firstName") {
